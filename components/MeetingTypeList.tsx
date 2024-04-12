@@ -3,6 +3,7 @@
 import { useState } from "react";
 import HomeCard from "./HomeCard"
 import { useRouter } from "next/navigation"
+import MeetingModal from "./MeetingModal";
 
 const MeetingTypeList = () => {
 	const router = useRouter();
@@ -41,6 +42,15 @@ const MeetingTypeList = () => {
 				description="Meeting Recordings"
 				className="bg-yellow-1"
 				handleClick={() => router.push('/recordings')}
+			/>
+
+			<MeetingModal
+				isOpen={meetingState === 'isInstantMeeting'} 
+				onClose={() => setMeetingState(undefined)}
+				title="Start an Instant Meeting"
+				className="text-center"
+				buttonText="Start Meeting"
+				handleClick={createMeeting}
 			/>
 		</section>
 	)
